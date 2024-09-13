@@ -7,6 +7,12 @@ import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 
+import { createMaterialBottomTabNavigator } from "react-native-paper/react-navigation";
+const Tab = createMaterialBottomTabNavigator();
+import TabOne from './index';
+import TabTwo from './two';
+import TabThree from './three/index';
+
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
@@ -19,41 +25,74 @@ export default function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
-      }}>
-      <Tabs.Screen
+    // <Tabs
+    //   screenOptions={{
+    //     tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+    //     // Disable the static render of the header on web
+    //     // to prevent a hydration error in React Navigation v6.
+    //     headerShown: useClientOnlyValue(false, true),
+    //   }}>
+    //   <Tabs.Screen
+    //     name="index"
+    //     options={{
+    //       title: 'Tab One',
+    //       tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+    //       headerRight: () => (
+    //         <Link href="/modal" asChild>
+    //           <Pressable>
+    //             {({ pressed }) => (
+    //               <FontAwesome
+    //                 name="info-circle"
+    //                 size={25}
+    //                 color={Colors[colorScheme ?? 'light'].text}
+    //                 style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+    //               />
+    //             )}
+    //           </Pressable>
+    //         </Link>
+    //       ),
+    //     }}
+    //   />
+    //   <Tabs.Screen
+    //     name="two"
+    //     options={{
+    //       title: 'Tab Two',
+    //       tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+    //     }}
+    //   />
+      
+    //   <Tabs.Screen
+    //     name="three"
+    //     options={{
+    //       title: 'Tab Three',
+    //       tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+    //     }}
+    //   />
+    // </Tabs>
+
+    // Uncomment the tabs above, and comment the Tabs below, and the stack in tab 3 will work as expected.
+    <Tab.Navigator>
+      <Tab.Screen
         name="index"
+        component={TabOne}
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+          tabBarIcon: 'home'
         }}
       />
-      <Tabs.Screen
+      <Tab.Screen
         name="two"
+        component={TabTwo}
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: 'home'
         }}
       />
-    </Tabs>
+      <Tab.Screen
+        name="three"
+        component={TabThree}
+        options={{
+          tabBarIcon: 'home'
+        }}
+      />
+    </Tab.Navigator>
   );
 }
