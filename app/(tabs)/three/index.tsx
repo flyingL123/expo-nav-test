@@ -10,7 +10,7 @@ export default function TabThreeScreen() {
       <Text style={styles.title}>Tab Three</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="app/(tabs)/three.tsx" />
-      <Link href="/three/another-page">Go to another page</Link>
+      <Link href="/three/anotherpage">Go to another page</Link>
     </View>
   );
 }

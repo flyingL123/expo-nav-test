@@ -8,6 +8,8 @@ import 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
 import { PaperProvider } from 'react-native-paper';
+import { useNavigationContainerRef, Slot } from 'expo-router';
+import { useReactNavigationDevTools } from '@dev-plugins/react-navigation';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -42,6 +44,10 @@ export default function RootLayout() {
   if (!loaded) {
     return null;
   }
+
+  const navigationRef = useNavigationContainerRef();
+
+  useReactNavigationDevTools(navigationRef);
 
   return <RootLayoutNav />;
 }

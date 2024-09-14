@@ -10,7 +10,7 @@ export default function TabThreeStack() {
     return (
         <Stack>
             <Stack.Screen name="index" />
-            <Stack.Screen name="another-page" />
+            <Stack.Screen name="anotherpage" />
         </Stack>
       );
 }
